@@ -1,0 +1,8 @@
+{% extends 'admin/change_form.html' %}
+
+{% block submit_buttons_bottom %}
+    {{ block.super }}
+    <div>
+        <a href="{% url 'generate_fixtures_admin' %}" class="button">Generate Fixtures</a>
+    </div>
+{% endblock %}

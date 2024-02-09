@@ -1,0 +1,20 @@
+<!-- fixtures.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generated Fixtures</title>
+</head>
+<body>
+    <h1>Generated Fixtures</h1>
+    <p>Start Date: {{ start_date }}</p>
+    {% for round_matches in fixtures_list %}
+        <h2>Round {{ forloop.counter }}</h2>  <!-- Use forloop.counter instead of round_num + 1 -->
+        <ul>
+            {% for match in round_matches %}
+                <li>{{ match.0 }} vs {{ match.1 }} - {{ match.2 }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>

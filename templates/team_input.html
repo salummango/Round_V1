@@ -1,0 +1,16 @@
+<!-- team_input.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter Teams</title>
+</head>
+<body>
+    <h1>Enter Teams</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Generate Fixtures</button>
+    </form>
+</body>
+</html>

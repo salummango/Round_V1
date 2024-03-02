@@ -51,21 +51,3 @@ def generate_double_round_robin_fixtures(teams, rules):
         matches.append(round_matches)
 
     return matches, start_date
-
-# if __name__ == "__main__":
-#     num_teams = int(input("Enter the number of teams: "))
-#     teams = []
-
-#     for i in range(num_teams):
-#         team_name = input(f"Enter the name of team {i+1}: ")
-#         teams.append(team_name)
-
-#     rules = load_rules_from_database()
-#     fixtures, start_date = generate_double_round_robin_fixtures(teams, rules)
-
-#     print("\nGenerated Fixtures:\n")
-#     for round_num, round_matches in enumerate(fixtures):
-#         print(f"Round {round_num + 1}: ({start_date.strftime('%Y-%m-%d')} to {start_date + timedelta(days=6)})")
-#         for match in round_matches:
-#             print(f"{match[0]} vs {match[1]} - {match[2]}")
-#         print()

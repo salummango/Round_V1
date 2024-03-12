@@ -15,6 +15,10 @@ def insert_initial_data(apps, schema_editor):
         {
             "name": "LeagueStartDate",
             "value": "2024-01-05"
+        },
+        {
+            "name": "HomeAwayBalance",
+            "value": "3H2A"
         }
     ]
     for data in initial_data:

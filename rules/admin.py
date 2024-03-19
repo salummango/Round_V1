@@ -4,20 +4,8 @@ from .models import Team, Fixture, Rule
 from .fixture import generate_double_round_robin_fixtures
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources
-
-# def generate_fixtures(modeladmin, request, queryset):
-#     teams = queryset.all()
-#     # Fetch rules from the database
-#     rules = {rule.name: rule.value for rule in Rule.objects.all()}
-#     fixtures, start_date = generate_double_round_robin_fixtures(teams, rules)
-
-    
-#     for round_matches in fixtures:
-#         for match in round_matches:
-#             fixture = Fixture(home_team=match[0], away_team=match[1], match_date=match[2])
-#             fixture.save()
-
-# generate_fixtures.short_description = "Generate fixtures"
+from datetime import datetime
+from django.utils import timezone
 
 def generate_fixtures(modeladmin, request, queryset):
     teams = queryset.all()
@@ -26,11 +14,12 @@ def generate_fixtures(modeladmin, request, queryset):
 
     for round_num, round_matches in enumerate(fixtures, start=1):
         for match in round_matches:
-            home_team, away_team, match_date = match
+            home_team, away_team,  match_date = match
             
             # Determine the stadium and city for the fixture
             match_stadium = home_team.stadium  # assign each team with it's stadium
             match_city = home_team.city  # assign each team with it's city
+            
             
             fixture = Fixture(
                 home_team=home_team,
@@ -38,7 +27,8 @@ def generate_fixtures(modeladmin, request, queryset):
                 match_date=match_date,
                 round_number=round_num,  
                 match_stadium=match_stadium,
-                match_city=match_city
+                match_city=match_city,
+                
             )
             fixture.save()
 
